@@ -271,6 +271,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66e05f4c3d9ace7878d60a078fec247b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 482151041}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OnNumberStart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   numberChanged:
     m_PersistentCalls:
       m_Calls:
@@ -286,7 +301,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _number: 10
+  number: 10
 --- !u!114 &482151041 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7530903043455601348, guid: b3dc47157bb1ac04796a1be18d62e4e6, type: 3}
@@ -433,6 +448,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66e05f4c3d9ace7878d60a078fec247b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 482151041}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OnNumberStart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   numberChanged:
     m_PersistentCalls:
       m_Calls:
@@ -448,7 +478,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _number: 8
+  number: 12
 --- !u!114 &816807053
 MonoBehaviour:
   m_ObjectHideFlags: 0

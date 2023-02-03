@@ -10,22 +10,14 @@ public class Test_Number : MonoBehaviour
 {
     TextMeshProUGUI text;
     float timestamp;
+    public UnityEvent<int> numberStart;
     public UnityEvent<int, int> numberChanged;
-    public int _number = 0;
-    public int number {
-        get {
-            return _number;
-        }
-        set {
-            numberChanged.Invoke(_number, value);
-            _number = value;
-            text.text = value.ToString();
-        }
-    }
+    public int number = 0;
     // Start is called before the first frame update
     void Start()
     {
         text = GetComponent<TextMeshProUGUI>();
+        numberStart.Invoke(number);
         text.text = number.ToString();
         timestamp = Time.time;
     }
@@ -37,8 +29,10 @@ public class Test_Number : MonoBehaviour
         // Every second, increment or decrement value
         if(timestamp + 1 < Time.time) {
             timestamp = Time.time;
+            int oldNumber = number;
             number += flip ? 1 : -1;
-            Debug.Log("Number changed to " + number);
+            numberChanged.Invoke(oldNumber, number);
+            text.text = number.ToString();
             flip = !flip;
         }
     }

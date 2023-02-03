@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     [Header("Game")]
-    public float winTime, loseTime;
+    public float winTime;
+    public float loseTime;
     public int rangeMin, rangeMax;
     [Header("UI")]
     public Slider winSlider;
@@ -36,13 +37,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void OnNumberStart(int number) {
+        if (number < rangeMin || number > rangeMax) {
+            targetsOutOfRange++;
+        }
+    }
+
     public void OnNumberChanged(int from, int to) {
-        // Left range?
-        if (to > rangeMax || to < rangeMin) {
+        // Did it just left range?
+        if ((from >= rangeMin && from <= rangeMax) && (to < rangeMin || to > rangeMax)) {
             targetsOutOfRange++;
         // Got back in range?
-        } else if (to <= rangeMax && to >= rangeMin) {
+        } else if ((from < rangeMin || from > rangeMax) && (to >= rangeMin && to <= rangeMax)) {
             targetsOutOfRange--;
         }
+        Debug.Log("From: " + from + ", To: " + to);
+        Debug.Log("Targets out of range: " + targetsOutOfRange);
     }
 }
