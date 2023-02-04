@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1428611034834279842}
   m_Layer: 0
   m_Name: Sword
-  m_TagString: Player
+  m_TagString: SquaredRoot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -426,5 +426,5 @@ MonoBehaviour:
   bulletPrefab: {fileID: 4465010030681883273, guid: 708f8391e03c54c49a6719db5bff66d4, type: 3}
   swordCollider: {fileID: 2522549368018108675}
   cooldown: 0.5
-  bulletIndicator: {fileID: 0}
+  bulletIndicator: {fileID: 6358080610392054810}
   currentAttackType: 0
