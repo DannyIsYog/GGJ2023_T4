@@ -29,7 +29,6 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         begin = true;
-        Debug.Log("S");
         foreach(GameObject obj in GameObject.FindGameObjectsWithTag("Number")) {
             obj.GetComponent<NumberEntity>().StartGame();
         }
