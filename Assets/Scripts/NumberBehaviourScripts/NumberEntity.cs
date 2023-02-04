@@ -81,18 +81,20 @@ public class NumberEntity : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // If shot by a squared projectile...
-        if (collision.gameObject.tag == "SquareProjectile")
+        if (collision.gameObject.tag == "PowerProjectile")
         {
             numberValue = Mathf.Pow(numberValue, 2);
             SpriteUpdate();
+            Debug.Log("Collided with a power projectile");
         }
         // If collided with squared root...
         else if (collision.gameObject.tag == "SquaredRoot")
         {
+            Debug.Log("Collided with a squared root");
             numberValue = Mathf.Sqrt(numberValue);
 
             // If it is not a whole number...
-            if(numberValue % 1 != 0)
+            if (numberValue % 1 != 0)
             {
                 // Gets largest smaller integer
                 float smallerInteger = Mathf.Floor(numberValue);
