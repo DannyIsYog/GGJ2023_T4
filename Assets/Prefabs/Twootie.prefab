@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2582523048880164735}
   m_Layer: 0
   m_Name: Triangle
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -216,7 +216,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7767869035903676263}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -356,10 +356,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1236673888207585316}
-  - component: {fileID: 4698927426522800674}
   m_Layer: 0
   m_Name: BulletIndicator
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -380,20 +379,3 @@ Transform:
   m_Father: {fileID: 7767869035903676260}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4698927426522800674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8218464632248510721}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 363a02e9d04c3bc4cbf62aeb6314e8d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 4465010030681883273, guid: 708f8391e03c54c49a6719db5bff66d4, type: 3}
-  swordCollider: {fileID: 0}
-  cooldown: 0.5
-  bulletIndicator: {fileID: 5341371511600200625}
-  currentAttackType: 0

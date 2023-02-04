@@ -31,6 +31,7 @@ public class AttackManager : MonoBehaviour
     public void Attack(InputAction.CallbackContext context)
     {
         if (currentCooldown > 0) return;
+        if (!context.started) return;
         if (currentAttackType == AttackType.Melee)
         {
             Attack_performed(context);
@@ -45,7 +46,7 @@ public class AttackManager : MonoBehaviour
     {
         GameObject bullet = Instantiate(bulletPrefab, bulletIndicator.transform.position, Quaternion.identity);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(transform.up * 10, ForceMode2D.Impulse);
+        rb.AddForce(bulletIndicator.transform.up * 10, ForceMode2D.Impulse);
         currentCooldown = cooldown;
     }
 
