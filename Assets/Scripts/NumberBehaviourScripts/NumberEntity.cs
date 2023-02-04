@@ -42,6 +42,7 @@ public class NumberEntity : MonoBehaviour
     private float timePower;
     private bool isChanging = false;
     private SpriteRenderer spriteRenderer;
+    bool begin = false;
 
     void Awake()
     {
@@ -63,14 +64,15 @@ public class NumberEntity : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log("Number: " + numberValue);
-        Movement();
-        IncrementDecrement();
-        PerfectSquareHeadsUp();
+        if(begin) {
+            Movement();
+            IncrementDecrement();
+            PerfectSquareHeadsUp();
 
-        // Keep track of time
-        timePower += Time.deltaTime;
-        timeSqr += Time.deltaTime;
+            // Keep track of time
+            timePower += Time.deltaTime;
+            timeSqr += Time.deltaTime;
+        }
     }
 
     private void SetValue(float value)
@@ -90,6 +92,11 @@ public class NumberEntity : MonoBehaviour
         SetValue(numberValue);
 
         ConfigureTimeChange();
+    }
+
+    public void BeginGame()
+    {
+        begin = true;
     }
 
     private void ConfigureTimeChange()
@@ -114,8 +121,14 @@ public class NumberEntity : MonoBehaviour
     private void Movement()
     {
         // Movement - manipulation of rigidbody
+        Debug.Log("a");
         rb.velocity = moveDirection * movementSpeed * Time.deltaTime;
         lastVelocity = rb.velocity;
+    }
+
+    public void StartGame()
+    {
+        begin = true;
     }
 
 

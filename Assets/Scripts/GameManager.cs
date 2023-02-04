@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI winText;
     public TextMeshProUGUI rangeText;
     public Slider loseSlider;
+    bool begin = false;
 
     int targetsOutOfRange;
     // Start is called before the first frame update
@@ -25,20 +26,36 @@ public class GameManager : MonoBehaviour
         rangeText.text = "Range: " + rangeMin.ToString() + " -- " + rangeMax.ToString();
     }
 
+    public void StartGame()
+    {
+        begin = true;
+        Debug.Log("S");
+        foreach(GameObject obj in GameObject.FindGameObjectsWithTag("Number")) {
+            obj.GetComponent<NumberEntity>().StartGame();
+        }
+    }
+
     // Update is called once per frame
     float winInterval;
+    public bool test = false;
     void Update()
     {
-        if (targetsOutOfRange == 0) {
-            winInterval = Mathf.Max(0, winInterval - Time.deltaTime);
-            winText.text = Mathf.CeilToInt(winInterval).ToString();
-            if (winInterval <= 0) {
-                Debug.Log("You win!");
-            }
-        } else {
-            loseSlider.value = Mathf.Max(0, loseSlider.value - (Time.deltaTime / loseTime));
-            if (loseSlider.value <= 0) {
-                Debug.Log("You lose!");
+        if(test)    {
+            StartGame();
+            test = false;
+        }
+        if(begin) {
+            if (targetsOutOfRange == 0) {
+                winInterval = Mathf.Max(0, winInterval - Time.deltaTime);
+                winText.text = Mathf.CeilToInt(winInterval).ToString();
+                if (winInterval <= 0) {
+                    Debug.Log("You win!");
+                }
+            } else {
+                loseSlider.value = Mathf.Max(0, loseSlider.value - (Time.deltaTime / loseTime));
+                if (loseSlider.value <= 0) {
+                    Debug.Log("You lose!");
+                }
             }
         }
     }
