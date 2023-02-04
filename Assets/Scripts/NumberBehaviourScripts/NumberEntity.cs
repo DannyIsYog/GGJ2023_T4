@@ -15,17 +15,16 @@ public class NumberEntity : MonoBehaviour
     public float movementSpeed = 200.0f;
     public float newNumberOffset = 1.5f;
 
-    // Sprites
-    [Header("Sprites")]
-    public bool activateTest = false;
-
     // Number Control
     [Header("Number Control")]
     public float timeToIncDec = 10.0f;
+    public float playerSqrChangeCooldown = 5.0f;
+    public float playerPowerChangeCooldown = 5.0f;
     public bool randomizeIncDec = true;
     public bool isIncrementing = false;
     public UnityEvent<int> numberStart;
     public UnityEvent<int, int> numberChanged;
+
     // Text
     [Header("Text")]
     public TextMeshProUGUI text;
@@ -38,6 +37,8 @@ public class NumberEntity : MonoBehaviour
 
     // Auxiliary variables - Number
     public float numberValue;
+    private float timeSqr;
+    private float timePower;
     private bool isChanging = false;
     private SpriteRenderer spriteRenderer;
 
@@ -52,6 +53,11 @@ public class NumberEntity : MonoBehaviour
         // Get random initial direction
         moveDirection = Random.insideUnitCircle.normalized;
         numberStart.Invoke((int)numberValue);
+
+        // Initialize numbers with no cooldown
+        timePower = playerPowerChangeCooldown;
+        timeSqr = playerSqrChangeCooldown;
+
     }
 
     void FixedUpdate()
@@ -61,8 +67,9 @@ public class NumberEntity : MonoBehaviour
         IncrementDecrement();
         PerfectSquareHeadsUp();
 
-        if (activateTest) // TBD
-            Divide(0.0f);
+        // Keep track of time
+        timePower += Time.deltaTime;
+        timeSqr += Time.deltaTime;
     }
 
     private void SetValue(float value)
@@ -111,13 +118,16 @@ public class NumberEntity : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // If shot by a squared projectile...
-        if (collision.gameObject.tag == "PowerProjectile")
+        if (collision.gameObject.tag == "PowerProjectile" && timePower >= playerPowerChangeCooldown)
         {
             SetValue(Mathf.Pow(numberValue, 2));
             Debug.Log("Collided with a power projectile");
+
+            // Variable for cooldown
+            timePower = 0;
         }
         // If collided with squared root...
-        else if (collision.gameObject.tag == "SquaredRoot")
+        else if (collision.gameObject.tag == "SquaredRoot" && timeSqr >= playerSqrChangeCooldown)
         {
             Debug.Log("Collided with a squared root");
             float value = Mathf.Sqrt(numberValue);
@@ -145,6 +155,8 @@ public class NumberEntity : MonoBehaviour
                 ConfigureTimeChange();
             }
 
+            // Variable for cooldown
+            timeSqr = 0;
         }
         // If collided with wall or other number...
         else
@@ -183,7 +195,6 @@ public class NumberEntity : MonoBehaviour
 
     private void Divide(float newNumber)
     {
-        activateTest = false; // TBD
 
         // Copy this number
         GameObject decimalNumber = GameObject.Instantiate(gameObject);
@@ -196,6 +207,8 @@ public class NumberEntity : MonoBehaviour
         // Offset the new number slightly so we don't have instant collision
         decimalNumber.GetComponent<Rigidbody2D>().position = rb.position - moveDirection * newNumberOffset;
         decimalNumberEntity.moveDirection = -1 * moveDirection;
+        decimalNumberEntity.timeSqr = 0;
+
     }
 
     private void PerfectSquareHeadsUp()

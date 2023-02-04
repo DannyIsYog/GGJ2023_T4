@@ -254,7 +254,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &102278111
 PrefabInstance:
@@ -269,7 +269,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7866978595244985541, guid: 32da2f37c8ca836458b2dcc8f8bcd7d3, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7866978595244985541, guid: 32da2f37c8ca836458b2dcc8f8bcd7d3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -313,7 +313,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7866978595244985542, guid: 32da2f37c8ca836458b2dcc8f8bcd7d3, type: 3}
       propertyPath: numberValue
-      value: 25
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 7866978595244985542, guid: 32da2f37c8ca836458b2dcc8f8bcd7d3, type: 3}
       propertyPath: timeToIncDec
@@ -326,6 +326,14 @@ PrefabInstance:
     - target: {fileID: 7866978595244985542, guid: 32da2f37c8ca836458b2dcc8f8bcd7d3, type: 3}
       propertyPath: randomizeIncDec
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7866978595244985542, guid: 32da2f37c8ca836458b2dcc8f8bcd7d3, type: 3}
+      propertyPath: playerSqrChangeCooldown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7866978595244985542, guid: 32da2f37c8ca836458b2dcc8f8bcd7d3, type: 3}
+      propertyPath: playerPowerChangeCooldown
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7866978595244985542, guid: 32da2f37c8ca836458b2dcc8f8bcd7d3, type: 3}
       propertyPath: numberStart.m_PersistentCalls.m_Calls.Array.size
@@ -516,7 +524,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!114 &186711913 stripped
 MonoBehaviour:
@@ -624,6 +632,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NumberPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 7866978595244985539, guid: 32da2f37c8ca836458b2dcc8f8bcd7d3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7866978595244985541, guid: 32da2f37c8ca836458b2dcc8f8bcd7d3, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -683,6 +695,14 @@ PrefabInstance:
     - target: {fileID: 7866978595244985542, guid: 32da2f37c8ca836458b2dcc8f8bcd7d3, type: 3}
       propertyPath: randomizeIncDec
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7866978595244985542, guid: 32da2f37c8ca836458b2dcc8f8bcd7d3, type: 3}
+      propertyPath: playerSqrChangeCooldown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7866978595244985542, guid: 32da2f37c8ca836458b2dcc8f8bcd7d3, type: 3}
+      propertyPath: playerPowerChangeCooldown
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7866978595244985542, guid: 32da2f37c8ca836458b2dcc8f8bcd7d3, type: 3}
       propertyPath: numberStart.m_PersistentCalls.m_Calls.Array.size
@@ -873,7 +893,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &1376918998
 GameObject:
@@ -1006,7 +1026,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1448948727
 PrefabInstance:
@@ -1045,7 +1065,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8253628558821706718, guid: b3dc47157bb1ac04796a1be18d62e4e6, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8253628558821706718, guid: b3dc47157bb1ac04796a1be18d62e4e6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1098,7 +1118,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 97758317945974452, guid: ca30e1dcc497be84080a2e56dea5ab23, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 97758317945974452, guid: ca30e1dcc497be84080a2e56dea5ab23, type: 3}
       propertyPath: m_LocalPosition.x
