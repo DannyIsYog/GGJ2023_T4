@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public int rangeMin, rangeMax;
     [Header("UI")]
     public TextMeshProUGUI winText;
+    public TextMeshProUGUI rangeText;
     public Slider loseSlider;
 
     int targetsOutOfRange;
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
         loseSlider.value = 1;
         winInterval = winTime;
         winText.text = Mathf.CeilToInt(winInterval).ToString();
+        rangeText.text = "Range: " + rangeMin.ToString() + " -- " + rangeMax.ToString();
     }
 
     // Update is called once per frame

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using TMPro;
 
 public class NumberEntity : MonoBehaviour
 {
@@ -23,6 +25,11 @@ public class NumberEntity : MonoBehaviour
     public float timeToIncDec = 10.0f;
     public bool randomizeIncDec = true;
     public bool isIncrementing = false;
+    public UnityEvent<int> numberStart;
+    public UnityEvent<int, int> numberChanged;
+    // Text
+    [Header("Text")]
+    public TextMeshProUGUI text;
 
     // Auxiliary variables - Movement
     private Rigidbody2D rb;
@@ -37,17 +44,20 @@ public class NumberEntity : MonoBehaviour
 
     void Awake()
     {
-        ConfigureInitialNumber();
-
         // Connect rigidbody
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        ConfigureInitialNumber();
 
         // Get random initial direction
         moveDirection = Random.insideUnitCircle.normalized;
+        numberStart.Invoke((int)numberValue);
     }
 
     void FixedUpdate()
     {
+        Debug.Log("Number: " + numberValue);
         Movement();
         IncrementDecrement();
         PerfectSquareHeadsUp();
@@ -56,12 +66,18 @@ public class NumberEntity : MonoBehaviour
             Divide(0.0f);
     }
 
+    private void SetValue(float value)
+    {
+        Debug.Log("Value to " + value);
+        numberChanged.Invoke((int)numberValue, (int)value);
+        numberValue = (int)value;
+        text.text = numberValue.ToString();
+    }
+
     private void ConfigureInitialNumber()
     {
         // Choose random number and assign sprites
-        numberValue = Random.Range(0, usableSprites.Length); // TBD
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = usableSprites[(int)numberValue];
+        SetValue(numberValue);
 
         ConfigureTimeChange();
     }
@@ -98,40 +114,38 @@ public class NumberEntity : MonoBehaviour
         // If shot by a squared projectile...
         if (collision.gameObject.tag == "PowerProjectile")
         {
-            numberValue = Mathf.Pow(numberValue, 2);
-            SpriteUpdate();
+            SetValue(Mathf.Pow(numberValue, 2));
             Debug.Log("Collided with a power projectile");
         }
         // If collided with squared root...
         else if (collision.gameObject.tag == "SquaredRoot")
         {
             Debug.Log("Collided with a squared root");
-            numberValue = Mathf.Sqrt(numberValue);
+            float value = Mathf.Sqrt(numberValue);
+            SetValue(value);
 
             // Square root of negative number is MATH ERROR (Memes)
-            if(numberValue < 0)
+            if(value < 0)
             {
                 Application.Quit();
             }
 
             // If it is not a whole number...
-            if (numberValue % 1 != 0)
+            if (value % 1 != 0)
             {
                 // Gets largest smaller integer
-                float smallerInteger = Mathf.Floor(numberValue);
+                float smallerInteger = Mathf.Floor(value);
 
                 // Originate another number (1st decimal digit)
-                float decimals = numberValue - smallerInteger;
+                float decimals = value - smallerInteger;
                 decimals = decimals * 10;
                 Divide(Mathf.Floor(decimals));
 
                 // Update this number with largest smaller integer
-                numberValue = smallerInteger;
+                SetValue(smallerInteger);
                 ConfigureTimeChange();
             }
 
-            // Do normal sprite update
-            SpriteUpdate();
         }
         // If collided with wall or other number...
         else
@@ -140,20 +154,6 @@ public class NumberEntity : MonoBehaviour
             reflectDirection = Vector2.Reflect(lastVelocity, collision.contacts[0].normal);
             moveDirection = reflectDirection.normalized;
         }
-    }
-
-    public void SpriteUpdate()
-    {
-        // Update sprite
-        if ((int)numberValue > 2)
-            numberValue = 2;
-        if ((int)numberValue < 0)
-            numberValue = 0;
-
-        spriteRenderer.sprite = usableSprites[(int)numberValue]; // TBD
-
-        // CHANGE SPRITE OR FONT IN ORDER TO DISTINGUISH + OR -
-
     }
 
     private void IncrementDecrement()
@@ -174,11 +174,10 @@ public class NumberEntity : MonoBehaviour
 
         // Change number value and update sprite
         if (isIncrementing)
-            numberValue += 1;
+            SetValue(numberValue + 1);
         else
-            numberValue -= 1;
+            SetValue(numberValue - 1);
 
-        SpriteUpdate();
 
         isChanging = false;
     }
@@ -192,9 +191,8 @@ public class NumberEntity : MonoBehaviour
         NumberEntity decimalNumberEntity = decimalNumber.GetComponent<NumberEntity>();
 
         // Assign new number value, update sprite
-        decimalNumberEntity.numberValue = 0.0f;    // CHANGE TO NEW NUMBER
+        decimalNumberEntity.SetValue(newNumber);
         decimalNumberEntity.ConfigureTimeChange();
-        decimalNumberEntity.SpriteUpdate();
 
         // Offset the new number slightly so we don't have instant collision
         decimalNumber.GetComponent<Rigidbody2D>().position = rb.position - moveDirection * newNumberOffset;
