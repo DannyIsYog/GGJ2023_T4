@@ -9,6 +9,7 @@ public class AimIndicatorController : MonoBehaviour
 
     public void Aim_performed(InputAction.CallbackContext obj)
     {
+        if (obj.canceled) return;
         //rotate the bullet indicator according to gamepad obj
         Vector2 aimInput = obj.ReadValue<Vector2>();
         float angle = Mathf.Atan2(aimInput.y, aimInput.x) * Mathf.Rad2Deg;
