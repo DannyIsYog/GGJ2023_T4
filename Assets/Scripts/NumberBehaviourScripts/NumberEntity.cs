@@ -17,7 +17,6 @@ public class NumberEntity : MonoBehaviour
 
     // Sprites
     [Header("Sprites")]
-    public Sprite[] usableSprites; // TBD
     public bool activateTest = false;
 
     // Number Control
