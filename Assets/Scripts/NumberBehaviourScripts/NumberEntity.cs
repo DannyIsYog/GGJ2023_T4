@@ -9,6 +9,7 @@ public class NumberEntity : MonoBehaviour
     // TO DO: APPLY MULTIPLE SPRITES TOGETHER/REPLACE SPRITE ARRAY WITH TEXT 
     // TO DO: CHANGE SPRITE OR FONT IN ORDER TO DISTINGUISH + OR - 
     // TO DO: CHANGE DIVIDE FUNCTION WITH NEW NUMBER
+    const int MAX_VAL = 10000;
 
     // Movement parameters
     [Header("Movement")]
@@ -75,6 +76,10 @@ public class NumberEntity : MonoBehaviour
     private void SetValue(float value)
     {
         numberChanged.Invoke((int)numberValue, (int)value);
+        if (value > MAX_VAL)
+            value = MAX_VAL;
+        else if (value < -MAX_VAL)
+            value = -MAX_VAL;
         numberValue = (int)value;
         text.text = numberValue.ToString();
     }
@@ -119,7 +124,9 @@ public class NumberEntity : MonoBehaviour
         // If shot by a squared projectile...
         if (collision.gameObject.tag == "PowerProjectile" && timePower >= playerPowerChangeCooldown)
         {
-            SetValue(Mathf.Pow(numberValue, 2));
+            float val = numberValue > MAX_VAL ? MAX_VAL : Mathf.Pow(numberValue, 2);
+            val = val > MAX_VAL ? MAX_VAL : val;
+            SetValue(val);
             Debug.Log("Collided with a power projectile");
 
             // Variable for cooldown
