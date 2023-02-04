@@ -16,8 +16,13 @@ public class NumberEntity : MonoBehaviour
     // Sprites
     [Header("Sprites")]
     public Sprite[] usableSprites; // TBD
-    public float timeToIncDec = 10.0f;
     public bool activateTest = false;
+
+    // Number Control
+    [Header("Number Control")]
+    public float timeToIncDec = 10.0f;
+    public bool randomizeIncDec = true;
+    public bool isIncrementing = false;
 
     // Auxiliary variables - Movement
     private Rigidbody2D rb;
@@ -28,7 +33,6 @@ public class NumberEntity : MonoBehaviour
     // Auxiliary variables - Number
     public float numberValue;
     private bool isChanging = false;
-    private bool isIncrementing = false;
     private SpriteRenderer spriteRenderer;
 
     void Awake()
@@ -46,6 +50,7 @@ public class NumberEntity : MonoBehaviour
     {
         Movement();
         IncrementDecrement();
+        PerfectSquareHeadsUp();
 
         if (activateTest) // TBD
             Divide(0.0f);
@@ -63,11 +68,21 @@ public class NumberEntity : MonoBehaviour
 
     private void ConfigureTimeChange()
     {
-        // Roll 50/50 for the number to be incrementing or decrementing
-        if (Random.Range(0, 2) == 1)
+        if(randomizeIncDec)
         {
-            isIncrementing = true;
+            // Roll 50/50 for the number to be incrementing or decrementing
+            if (Random.Range(0, 2) == 1)
+            {
+                isIncrementing = true;
+            }
         }
+
+        // Visual hints 
+        if (!isIncrementing)
+            spriteRenderer.color = new Color(0.8f, 0.0f, 0.0f);
+        else
+            spriteRenderer.color = new Color(0.0f, 0.8f, 0.0f);
+
     }
 
     private void Movement()
@@ -92,6 +107,12 @@ public class NumberEntity : MonoBehaviour
         {
             Debug.Log("Collided with a squared root");
             numberValue = Mathf.Sqrt(numberValue);
+
+            // Square root of negative number is MATH ERROR (Memes)
+            if(numberValue < 0)
+            {
+                Application.Quit();
+            }
 
             // If it is not a whole number...
             if (numberValue % 1 != 0)
@@ -130,7 +151,6 @@ public class NumberEntity : MonoBehaviour
             numberValue = 0;
 
         spriteRenderer.sprite = usableSprites[(int)numberValue]; // TBD
-
 
         // CHANGE SPRITE OR FONT IN ORDER TO DISTINGUISH + OR -
 
@@ -180,5 +200,27 @@ public class NumberEntity : MonoBehaviour
         decimalNumber.GetComponent<Rigidbody2D>().position = rb.position - moveDirection * newNumberOffset;
         decimalNumberEntity.moveDirection = -1 * moveDirection;
     }
+
+    private void PerfectSquareHeadsUp()
+    {
+        // BEWARE: AT CURRENT TIME (16:14) THIS DOESN'T WORK SINCE SPRITE 0 CORRESPONDS TO 1
+
+        // If this number is perfect square...
+        if (Mathf.Sqrt(numberValue) % 1 == 0)
+        {
+            Debug.Log("PerfectSquare!!!");
+        }
+        // If next number is perfect square... (increasing)
+        else if (Mathf.Sqrt(numberValue + 1) % 1 == 0 && isIncrementing)
+        {
+            Debug.Log("PerfectSquareComingUp");
+        }
+        // If next number is perfect square... (decreasing)
+        else if (Mathf.Sqrt(numberValue - 1) % 1 == 0 && !isIncrementing)
+        {
+            Debug.Log("PerfectSquareComingUp");
+        }
+    }
+
 
 }
