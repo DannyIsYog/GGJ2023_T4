@@ -74,7 +74,6 @@ public class NumberEntity : MonoBehaviour
 
     private void SetValue(float value)
     {
-        Debug.Log("Value to " + value);
         numberChanged.Invoke((int)numberValue, (int)value);
         numberValue = (int)value;
         text.text = numberValue.ToString();
@@ -130,14 +129,17 @@ public class NumberEntity : MonoBehaviour
         else if (collision.gameObject.tag == "SquaredRoot" && timeSqr >= playerSqrChangeCooldown)
         {
             Debug.Log("Collided with a squared root");
+            if(numberValue < 0)
+            {
+                Debug.Log("MATH ERROR");
+                Application.Quit();
+                return;
+            }
+
             float value = Mathf.Sqrt(numberValue);
             SetValue(value);
 
             // Square root of negative number is MATH ERROR (Memes)
-            if(value < 0)
-            {
-                Application.Quit();
-            }
 
             // If it is not a whole number...
             if (value % 1 != 0)
