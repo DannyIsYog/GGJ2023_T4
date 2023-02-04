@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 5361394460119699111}
   - component: {fileID: 1535938062990328570}
   m_Layer: 0
-  m_Name: Player2
+  m_Name: Twootie
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -196,7 +196,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7767869035903676263}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -343,6 +343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 4465010030681883273, guid: 708f8391e03c54c49a6719db5bff66d4, type: 3}
+  swordCollider: {fileID: 0}
   cooldown: 0.5
   bulletIndicator: {fileID: 8218464632248510721}
   currentAttackType: 1
@@ -392,6 +393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 4465010030681883273, guid: 708f8391e03c54c49a6719db5bff66d4, type: 3}
+  swordCollider: {fileID: 0}
   cooldown: 0.5
   bulletIndicator: {fileID: 5341371511600200625}
   currentAttackType: 0

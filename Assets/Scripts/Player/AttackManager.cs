@@ -11,6 +11,8 @@ public class AttackManager : MonoBehaviour
         Ranged
     }
     public GameObject bulletPrefab;
+
+    public Collider2D swordCollider;
     public float cooldown = 0.5f;
 
     private float currentCooldown = 0f;
@@ -49,7 +51,13 @@ public class AttackManager : MonoBehaviour
 
     private void Attack_performed(InputAction.CallbackContext obj)
     {
-        //attack
+        swordCollider.enabled = true;
         currentCooldown = cooldown;
+        Invoke("DisableSwordCollider", 0.1f);
+    }
+
+    private void DisableSwordCollider()
+    {
+        swordCollider.enabled = false;
     }
 }
