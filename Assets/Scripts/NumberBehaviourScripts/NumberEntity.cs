@@ -22,7 +22,7 @@ public class NumberEntity : MonoBehaviour
     // Auxiliary variables - Movement
     private Rigidbody2D rb;
     private Vector2 moveDirection;
-    private Vector2 lastVelocity;
+    public Vector2 lastVelocity;
     private Vector2 reflectDirection;
 
     // Auxiliary variables - Number
@@ -176,7 +176,7 @@ public class NumberEntity : MonoBehaviour
 
         // Offset the new number slightly so we don't have instant collision
         decimalNumber.GetComponent<Rigidbody2D>().position = rb.position - moveDirection * newNumberOffset;
-        decimalNumber.GetComponent<Rigidbody2D>().velocity = -1 * moveDirection * movementSpeed * Time.deltaTime;
+        decimalNumberEntity.moveDirection = -1 * moveDirection;
     }
 
 }
