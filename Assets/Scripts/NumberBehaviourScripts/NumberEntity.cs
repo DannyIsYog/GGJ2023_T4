@@ -37,7 +37,7 @@ public class NumberEntity : MonoBehaviour
         moveDirection = Random.insideUnitCircle.normalized;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         Movement();
 
@@ -61,7 +61,9 @@ public class NumberEntity : MonoBehaviour
     {
         // Movement - manipulation of rigidbody
         rb.velocity = moveDirection * movementSpeed * Time.deltaTime;
+
         lastVelocity = rb.velocity;
+
     }
 
 
