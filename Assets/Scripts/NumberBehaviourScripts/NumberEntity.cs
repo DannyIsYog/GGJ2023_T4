@@ -6,15 +6,17 @@ public class NumberEntity : MonoBehaviour
 {
     // TO SOLVE: APPLY MULTIPLE SPRITES TOGETHER
     // TO SOLVE: COLLISION DONE WITH TAGS
-    // TO SOLVE: REMOVE TEST
+    // TO SOLVE: CHANGE SPRITE OR FONT IN ORDER TO DISTINGUISH
 
     // Movement parameters
     [Header("Movement")]
     public float movementSpeed = 200.0f;
+    public float newNumberOffset = 1.5f;
 
     // Sprites
     [Header("Sprites")]
     public Sprite[] usableSprites;
+    public float timeToIncDec = 10.0f;
     public bool activateTest = false;
 
     // Auxiliary variables - Movement
@@ -24,11 +26,14 @@ public class NumberEntity : MonoBehaviour
     private Vector2 reflectDirection;
 
     // Auxiliary variables - Number
-    private float numberValue;
+    public float numberValue;
+    private bool isChanging = false;
+    private bool isIncrementing = false;
+    private SpriteRenderer spriteRenderer;
 
-    void Start()
+    void Awake()
     {
-        ChooseInitialNumber();
+        ConfigureInitialNumber();
 
         // Connect rigidbody
         rb = GetComponent<Rigidbody2D>();
@@ -40,30 +45,36 @@ public class NumberEntity : MonoBehaviour
     void FixedUpdate()
     {
         Movement();
+        IncrementDecrement();
 
-        TEST();
-    }
-
-    void TEST()
-    {
         if (activateTest)
-            SpriteUpdate();
+            Divide(0.0f);
     }
 
-    private void ChooseInitialNumber()
+    private void ConfigureInitialNumber()
     {
         // Choose random number and assign sprites
         numberValue = Random.Range(0, usableSprites.Length);
-        GetComponent<SpriteRenderer>().sprite = usableSprites[(int)numberValue];
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = usableSprites[(int)numberValue];
+
+        ConfigureTimeChange();
+    }
+
+    private void ConfigureTimeChange()
+    {
+        // Roll 50/50 for the number to be incrementing or decrementing
+        if (Random.Range(0, 2) == 1)
+        {
+            isIncrementing = true;
+        }
     }
 
     private void Movement()
     {
         // Movement - manipulation of rigidbody
         rb.velocity = moveDirection * movementSpeed * Time.deltaTime;
-
         lastVelocity = rb.velocity;
-
     }
 
 
@@ -79,8 +90,27 @@ public class NumberEntity : MonoBehaviour
         else if (collision.gameObject.tag == "SquaredRoot")
         {
             numberValue = Mathf.Sqrt(numberValue);
+
+            // If it is not a whole number...
+            if(numberValue % 1 != 0)
+            {
+                // Gets largest smaller integer
+                float smallerInteger = Mathf.Floor(numberValue);
+
+                // Originate another number (1st decimal digit)
+                float decimals = numberValue - smallerInteger;
+                decimals = decimals * 10;
+                Divide(Mathf.Floor(decimals));
+
+                // Update this number with largest smaller integer
+                numberValue = smallerInteger;
+                ConfigureTimeChange();
+            }
+
+            // Do normal sprite update
             SpriteUpdate();
         }
+        // If collided with wall or other number...
         else
         {
             // Gets reflection direction based on current trajectory
@@ -89,12 +119,64 @@ public class NumberEntity : MonoBehaviour
         }
     }
 
-    private void SpriteUpdate()
+    public void SpriteUpdate()
     {
-        // Update sprite value
-        //currentSprite = usableSprites[(int)numberValue];
+        // Update sprite
+        if ((int)numberValue > 2)
+            numberValue = 2;
+        if ((int)numberValue < 0)
+            numberValue = 0;
 
-        GetComponent<SpriteRenderer>().sprite = usableSprites[0];
+        spriteRenderer.sprite = usableSprites[(int)numberValue];
+
+
+        // CHANGE SPRITE OR FONT IN ORDER TO DISTINGUISH + OR -
+
+    }
+
+    private void IncrementDecrement()
+    {
+        // After a given time, increment/decrement number
+        StartCoroutine(ChangeNumberAfterTime(timeToIncDec));
+    }
+
+    IEnumerator ChangeNumberAfterTime(float time)
+    {
+        if (isChanging)
+            yield break;
+        else
+            isChanging = true;
+
+        // Cooldown for changing number
+        yield return new WaitForSecondsRealtime(time);
+
+        // Change number value and update sprite
+        if (isIncrementing)
+            numberValue += 1;
+        else
+            numberValue -= 1;
+
+        SpriteUpdate();
+
+        isChanging = false;
+    }
+
+    private void Divide(float newNumber)
+    {
+        activateTest = false;
+
+        // Copy this number
+        GameObject decimalNumber = GameObject.Instantiate(gameObject);
+        NumberEntity decimalNumberEntity = decimalNumber.GetComponent<NumberEntity>();
+
+        // Assign new number value, update sprite
+        decimalNumberEntity.numberValue = 0.0f;    // CHANGE TO NEW NUMBER
+        decimalNumberEntity.ConfigureTimeChange();
+        decimalNumberEntity.SpriteUpdate();
+
+        // Offset the new number slightly so we don't have instant collision
+        decimalNumber.GetComponent<Rigidbody2D>().position = rb.position - moveDirection * newNumberOffset;
+        decimalNumber.GetComponent<Rigidbody2D>().velocity = -1 * moveDirection * movementSpeed * Time.deltaTime;
     }
 
 }

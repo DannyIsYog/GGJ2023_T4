@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 305919109}
   - component: {fileID: 305919111}
   m_Layer: 0
-  m_Name: NumberTemp
+  m_Name: NumberPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -393,11 +393,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 200
+  newNumberOffset: 1.5
   usableSprites:
   - {fileID: 21300000, guid: affeade9874cf2347abb155e8d0db4d8, type: 3}
   - {fileID: 21300000, guid: 0029170d14ce6c04c9f45c22cdae5559, type: 3}
   - {fileID: 21300000, guid: 36e6970b84831434a9eac79abd03700b, type: 3}
+  timeToIncDec: 10
   activateTest: 0
+  numberValue: 0
 --- !u!1 &555156324
 GameObject:
   m_ObjectHideFlags: 0
@@ -914,11 +917,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 200
+  newNumberOffset: 1.5
   usableSprites:
   - {fileID: 21300000, guid: affeade9874cf2347abb155e8d0db4d8, type: 3}
   - {fileID: 21300000, guid: 0029170d14ce6c04c9f45c22cdae5559, type: 3}
   - {fileID: 21300000, guid: 36e6970b84831434a9eac79abd03700b, type: 3}
+  timeToIncDec: 10
   activateTest: 0
+  numberValue: 0
 --- !u!50 &1410436123
 Rigidbody2D:
   serializedVersion: 4
@@ -1056,11 +1062,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 200
+  newNumberOffset: 1.5
   usableSprites:
   - {fileID: 21300000, guid: affeade9874cf2347abb155e8d0db4d8, type: 3}
   - {fileID: 21300000, guid: 0029170d14ce6c04c9f45c22cdae5559, type: 3}
   - {fileID: 21300000, guid: 36e6970b84831434a9eac79abd03700b, type: 3}
+  timeToIncDec: 10
   activateTest: 0
+  numberValue: 0
 --- !u!50 &1636666797
 Rigidbody2D:
   serializedVersion: 4
@@ -1198,11 +1207,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 200
+  newNumberOffset: 1.5
   usableSprites:
   - {fileID: 21300000, guid: affeade9874cf2347abb155e8d0db4d8, type: 3}
   - {fileID: 21300000, guid: 0029170d14ce6c04c9f45c22cdae5559, type: 3}
   - {fileID: 21300000, guid: 36e6970b84831434a9eac79abd03700b, type: 3}
+  timeToIncDec: 10
   activateTest: 0
+  numberValue: 0
 --- !u!50 &2011853666
 Rigidbody2D:
   serializedVersion: 4
