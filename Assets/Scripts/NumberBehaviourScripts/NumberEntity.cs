@@ -60,6 +60,15 @@ public class NumberEntity : MonoBehaviour
         timePower = playerPowerChangeCooldown;
         timeSqr = playerSqrChangeCooldown;
 
+        SetEnabled(false);
+    }
+
+    void SetEnabled(bool enabled)
+    {
+        Debug.Log("SetEnabled: " + enabled);
+        transform.GetChild(0).gameObject.SetActive(enabled);
+        GetComponent<SpriteRenderer>().enabled = enabled;
+        GetComponent<Collider2D>().enabled = enabled;
     }
 
     void FixedUpdate()
@@ -97,6 +106,7 @@ public class NumberEntity : MonoBehaviour
     public void BeginGame()
     {
         begin = true;
+        SetEnabled(true);
     }
 
     private void ConfigureTimeChange()
@@ -121,7 +131,6 @@ public class NumberEntity : MonoBehaviour
     private void Movement()
     {
         // Movement - manipulation of rigidbody
-        Debug.Log("a");
         rb.velocity = moveDirection * movementSpeed * Time.deltaTime;
         lastVelocity = rb.velocity;
     }
@@ -129,6 +138,7 @@ public class NumberEntity : MonoBehaviour
     public void StartGame()
     {
         begin = true;
+        SetEnabled(true);
     }
 
 
