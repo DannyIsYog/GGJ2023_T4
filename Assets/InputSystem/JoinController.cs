@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class JoinController : MonoBehaviour
-{
+{/*
     private PlayerInput playerInput;
 
     public GameObject[] players;
@@ -28,5 +28,5 @@ public class JoinController : MonoBehaviour
         players[0].GetComponent<PlayerMovement>().gamepad = obj.control.device as Gamepad;
         Debug.Log(obj.control.device.deviceId + " joined");
         players = players[1..];
-    }
+    }*/
 }
