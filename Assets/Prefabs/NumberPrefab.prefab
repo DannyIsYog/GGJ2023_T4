@@ -376,8 +376,8 @@ MonoBehaviour:
   movementSpeed: 200
   newNumberOffset: 1.5
   timeToIncDec: 10
-  playerSqrChangeCooldown: 2
-  playerPowerChangeCooldown: 2
+  playerSqrChangeCooldown: 0.2
+  playerPowerChangeCooldown: 0.2
   randomizeIncDec: 1
   isIncrementing: 0
   numberStart:

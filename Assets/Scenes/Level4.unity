@@ -329,11 +329,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7866978595244985542, guid: 32da2f37c8ca836458b2dcc8f8bcd7d3, type: 3}
       propertyPath: playerSqrChangeCooldown
-      value: 2
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7866978595244985542, guid: 32da2f37c8ca836458b2dcc8f8bcd7d3, type: 3}
       propertyPath: playerPowerChangeCooldown
-      value: 2
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7866978595244985542, guid: 32da2f37c8ca836458b2dcc8f8bcd7d3, type: 3}
       propertyPath: numberStart.m_PersistentCalls.m_Calls.Array.size
@@ -694,11 +694,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7866978595244985542, guid: 32da2f37c8ca836458b2dcc8f8bcd7d3, type: 3}
       propertyPath: playerSqrChangeCooldown
-      value: 2
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7866978595244985542, guid: 32da2f37c8ca836458b2dcc8f8bcd7d3, type: 3}
       propertyPath: playerPowerChangeCooldown
-      value: 2
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7866978595244985542, guid: 32da2f37c8ca836458b2dcc8f8bcd7d3, type: 3}
       propertyPath: numberStart.m_PersistentCalls.m_Calls.Array.size
@@ -831,11 +831,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7866978595244985542, guid: 32da2f37c8ca836458b2dcc8f8bcd7d3, type: 3}
       propertyPath: playerSqrChangeCooldown
-      value: 2
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7866978595244985542, guid: 32da2f37c8ca836458b2dcc8f8bcd7d3, type: 3}
       propertyPath: playerPowerChangeCooldown
-      value: 2
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7866978595244985542, guid: 32da2f37c8ca836458b2dcc8f8bcd7d3, type: 3}
       propertyPath: numberStart.m_PersistentCalls.m_Calls.Array.size
@@ -1101,11 +1101,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7866978595244985542, guid: 32da2f37c8ca836458b2dcc8f8bcd7d3, type: 3}
       propertyPath: playerSqrChangeCooldown
-      value: 2
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7866978595244985542, guid: 32da2f37c8ca836458b2dcc8f8bcd7d3, type: 3}
       propertyPath: playerPowerChangeCooldown
-      value: 2
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7866978595244985542, guid: 32da2f37c8ca836458b2dcc8f8bcd7d3, type: 3}
       propertyPath: numberStart.m_PersistentCalls.m_Calls.Array.size
@@ -1452,11 +1452,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7866978595244985542, guid: 32da2f37c8ca836458b2dcc8f8bcd7d3, type: 3}
       propertyPath: playerSqrChangeCooldown
-      value: 2
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7866978595244985542, guid: 32da2f37c8ca836458b2dcc8f8bcd7d3, type: 3}
       propertyPath: playerPowerChangeCooldown
-      value: 2
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7866978595244985542, guid: 32da2f37c8ca836458b2dcc8f8bcd7d3, type: 3}
       propertyPath: numberStart.m_PersistentCalls.m_Calls.Array.size
