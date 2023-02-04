@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class NumberEntity : MonoBehaviour
 {
-    // TO SOLVE: APPLY MULTIPLE SPRITES TOGETHER
-    // TO SOLVE: COLLISION DONE WITH TAGS
-    // TO SOLVE: CHANGE SPRITE OR FONT IN ORDER TO DISTINGUISH
+    // TO DO: APPLY MULTIPLE SPRITES TOGETHER/REPLACE SPRITE ARRAY WITH TEXT 
+    // TO DO: CHANGE SPRITE OR FONT IN ORDER TO DISTINGUISH + OR - 
+    // TO DO: CHANGE DIVIDE FUNCTION WITH NEW NUMBER
 
     // Movement parameters
     [Header("Movement")]
@@ -15,7 +15,7 @@ public class NumberEntity : MonoBehaviour
 
     // Sprites
     [Header("Sprites")]
-    public Sprite[] usableSprites;
+    public Sprite[] usableSprites; // TBD
     public float timeToIncDec = 10.0f;
     public bool activateTest = false;
 
@@ -47,14 +47,14 @@ public class NumberEntity : MonoBehaviour
         Movement();
         IncrementDecrement();
 
-        if (activateTest)
+        if (activateTest) // TBD
             Divide(0.0f);
     }
 
     private void ConfigureInitialNumber()
     {
         // Choose random number and assign sprites
-        numberValue = Random.Range(0, usableSprites.Length);
+        numberValue = Random.Range(0, usableSprites.Length); // TBD
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = usableSprites[(int)numberValue];
 
@@ -129,7 +129,7 @@ public class NumberEntity : MonoBehaviour
         if ((int)numberValue < 0)
             numberValue = 0;
 
-        spriteRenderer.sprite = usableSprites[(int)numberValue];
+        spriteRenderer.sprite = usableSprites[(int)numberValue]; // TBD
 
 
         // CHANGE SPRITE OR FONT IN ORDER TO DISTINGUISH + OR -
@@ -165,7 +165,7 @@ public class NumberEntity : MonoBehaviour
 
     private void Divide(float newNumber)
     {
-        activateTest = false;
+        activateTest = false; // TBD
 
         // Copy this number
         GameObject decimalNumber = GameObject.Instantiate(gameObject);
