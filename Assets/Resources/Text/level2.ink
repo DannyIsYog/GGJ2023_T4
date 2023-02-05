@@ -12,6 +12,7 @@ So thoughtful, mister wizard! We'd love to stay but we were just on our way out.
 I'M A MAGICIAN!! THE MATH MAGICIAN!!!
 #Rootie
 Hmm... Ok.
+#Rootie
 Should we get going, Twootie? I'll need your help though.
 #Twootie
 You can count on me, Twootie!

@@ -87,6 +87,7 @@ public class DialogueManager : MonoBehaviour
                 nameBox.SetActive(true);
                 nameBox.GetComponentInChildren<TextMeshProUGUI>().text = tags[0];
                 nameImage.sprite = Resources.Load<Sprite>("Portraits/" + tags[0]);
+                nameImage.gameObject.SetActive(true);
                 if(nameImage.sprite == null)
                     nameImage.gameObject.SetActive(false);
             } else {

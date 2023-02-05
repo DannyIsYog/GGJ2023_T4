@@ -4,6 +4,7 @@ Uhh, where are we?
 Some sort of... dungeon?
 #Math Magician
 Hehehe... Do you want to play a game, little ones?
+#Math Magician
 Your math properties are very... fascinating!
 #Twootie
 Hello?... Who are you? What are you talking about?
@@ -11,6 +12,7 @@ Hello?... Who are you? What are you talking about?
 Oh, how naive... You are now prisoners of the dreadful, the horrible, the all-powerful MATH MAGICIAN!!! 
 #Rootie
 ...
+#Rootie
 'Math Magician'? That's a weird name.
 #Twootie
 Right? And your hat looks kinda funny, mister.
