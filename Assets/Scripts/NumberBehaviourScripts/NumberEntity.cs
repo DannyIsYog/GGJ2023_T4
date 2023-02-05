@@ -33,13 +33,13 @@ public class NumberEntity : MonoBehaviour
 
     // Auxiliary variables - Movement
     private Rigidbody2D rb;
-    private Vector2 moveDirection;
+    public Vector2 moveDirection;
     public Vector2 lastVelocity;
     private Vector2 reflectDirection;
 
     // Auxiliary variables - Number
     public float numberValue;
-    private float timeSqr;
+    public float timeSqr;
     private float timePower;
     private bool isChanging = false;
     private SpriteRenderer spriteRenderer;
@@ -64,7 +64,7 @@ public class NumberEntity : MonoBehaviour
         SetEnabled(false);
     }
 
-    void SetEnabled(bool enabled)
+    public void SetEnabled(bool enabled)
     {
         Debug.Log("SetEnabled: " + enabled);
         transform.GetChild(0).gameObject.SetActive(enabled);
@@ -85,7 +85,7 @@ public class NumberEntity : MonoBehaviour
         }
     }
 
-    private void SetValue(float value)
+    public void SetValue(float value)
     {
         numberChanged.Invoke((int)numberValue, (int)value);
         if (value > MAX_VAL)
@@ -101,7 +101,7 @@ public class NumberEntity : MonoBehaviour
             incdecText.text = "-";
     }
 
-    private void ConfigureInitialNumber()
+    public void ConfigureInitialNumber()
     {
         // Choose random number and assign sprites
         SetValue(numberValue);
@@ -115,7 +115,7 @@ public class NumberEntity : MonoBehaviour
         SetEnabled(true);
     }
 
-    private void ConfigureTimeChange()
+    public void ConfigureTimeChange()
     {
         if(randomizeIncDec)
         {
@@ -241,6 +241,7 @@ public class NumberEntity : MonoBehaviour
         // Assign new number value, update sprite
         decimalNumberEntity.SetValue(newNumber);
         decimalNumberEntity.ConfigureTimeChange();
+        decimalNumberEntity.StartGame();
 
         // Offset the new number slightly so we don't have instant collision
         decimalNumber.GetComponent<Rigidbody2D>().position = rb.position - moveDirection * newNumberOffset;

@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     public AudioSource intro, loop;
     bool begin = false;
 
-    int targetsOutOfRange;
+    public int targetsOutOfRange;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +47,9 @@ public class GameManager : MonoBehaviour
         foreach(GameObject obj in GameObject.FindGameObjectsWithTag("Number")) {
             obj.GetComponent<NumberEntity>().StartGame();
         }
+        foreach(GameObject obj in GameObject.FindGameObjectsWithTag("Variable")) {
+            obj.GetComponent<VariableEntity>().StartGame();
+        }
     }
 
     // Update is called once per frame
@@ -64,13 +67,15 @@ public class GameManager : MonoBehaviour
         }
         if(begin && !over) {
             if (targetsOutOfRange == 0) {
-                winInterval = Mathf.Max(0, winInterval - Time.deltaTime);
-                winText.text = Mathf.CeilToInt(winInterval).ToString();
-                if (winInterval <= 0) {
-                    over = true;
-                    won = true;
-                    rootUI.SetActive(true);
-                    winUI.SetActive(true);
+                if(!variableExists) {
+                    winInterval = Mathf.Max(0, winInterval - Time.deltaTime);
+                    winText.text = Mathf.CeilToInt(winInterval).ToString();
+                    if (winInterval <= 0) {
+                        over = true;
+                        won = true;
+                        rootUI.SetActive(true);
+                        winUI.SetActive(true);
+                    }
                 }
             } else {
                 loseSlider.value = Mathf.Max(0, loseSlider.value - (Time.deltaTime / loseTime));
@@ -98,5 +103,14 @@ public class GameManager : MonoBehaviour
         } else if ((from < rangeMin || from > rangeMax) && (to >= rangeMin && to <= rangeMax)) {
             targetsOutOfRange--;
         }
+    }
+
+    bool variableExists = false;
+    public void OnVariableStart(int number) {
+        variableExists = true;
+    }
+
+    public void OnVariableSpawn(int left) {
+        variableExists = left > 0;
     }
 }
