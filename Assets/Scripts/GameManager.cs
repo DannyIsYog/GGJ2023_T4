@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI rangeText;
     public Slider loseSlider;
     public GameObject rootUI;
+    public GameObject winUI;
+    public GameObject loseUI;
     public string nextScene;
     bool begin = false;
 
@@ -32,13 +34,10 @@ public class GameManager : MonoBehaviour
     public void NextLevel()
     {
         if(over)
-            SceneManager.LoadScene(nextScene);
-    }
-
-    public void Reset()
-    {
-        if(over)
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            if(won)
+                SceneManager.LoadScene(nextScene);
+            else
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void StartGame()
@@ -53,6 +52,7 @@ public class GameManager : MonoBehaviour
     float winInterval;
     public bool test = false;
     bool over = false;
+    bool won = false;
     void Update()
     {
         if(test)    {
@@ -65,13 +65,17 @@ public class GameManager : MonoBehaviour
                 winText.text = Mathf.CeilToInt(winInterval).ToString();
                 if (winInterval <= 0) {
                     over = true;
+                    won = true;
                     rootUI.SetActive(true);
+                    winUI.SetActive(true);
                 }
             } else {
                 loseSlider.value = Mathf.Max(0, loseSlider.value - (Time.deltaTime / loseTime));
                 if (loseSlider.value <= 0) {
                     over = true;
+                    won = false;
                     rootUI.SetActive(true);
+                    loseUI.SetActive(true);
                 }
             }
         }

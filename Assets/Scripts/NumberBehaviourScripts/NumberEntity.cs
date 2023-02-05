@@ -126,7 +126,7 @@ public class NumberEntity : MonoBehaviour
         if (!isIncrementing)
             spriteRenderer.color = new Color(0.8f, 0.0f, 0.0f);
         else
-            spriteRenderer.color = new Color(0.0f, 0.8f, 0.0f);
+            spriteRenderer.color = new Color(0.0f, 0.0f, 0.8f);
 
     }
 
