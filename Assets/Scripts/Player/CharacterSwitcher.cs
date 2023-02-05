@@ -10,10 +10,13 @@ public class CharacterSwitcher : MonoBehaviour
 
     PlayerInputManager playerInputManager;
 
+    GameManager gameManager;
+
     void Start()
     {
         playerInputManager = GetComponent<PlayerInputManager>();
         playerInputManager.playerPrefab = characters[currentCharacter];
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     public void SwitchNextCharacter()

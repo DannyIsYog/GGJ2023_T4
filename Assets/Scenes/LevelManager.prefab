@@ -589,7 +589,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8253628558821706718}
   - component: {fileID: 7530903043455601348}
-  - component: {fileID: 4626514960793695004}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -626,78 +625,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c44ea2c92316b72e8fb7a00461d053c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  winTime: 0
-  loseTime: 0
-  rangeMin: 0
-  rangeMax: 0
+  winTime: 10
+  loseTime: 30
+  rangeMin: -5
+  rangeMax: 30
   winText: {fileID: 8288704498064387047}
   rangeText: {fileID: 8527190641260009015}
   loseSlider: {fileID: 7207064271643372438}
   rootUI: {fileID: 8175675000103562837}
-  nextScene: 
+  nextScene: Scenes/Level2
   test: 0
---- !u!114 &4626514960793695004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4994625838157199112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: b79c68bbad223984d978b1687be42494, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 2e67a2f1-9e1b-4f53-9f62-082b2d62ef1a
-    m_ActionName: PlayerActionMap/Movement[/Gamepad/leftStick/up,/Gamepad1/leftStick/up,/Gamepad/leftStick/down,/Gamepad1/leftStick/down,/Gamepad/leftStick/left,/Gamepad1/leftStick/left,/Gamepad/leftStick/right,/Gamepad1/leftStick/right,/Gamepad/dpad/up,/Gamepad1/dpad/up,/Gamepad/dpad/down,/Gamepad1/dpad/down,/Gamepad/dpad/left,/Gamepad1/dpad/left,/Gamepad/dpad/right,/Gamepad1/dpad/right]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: a8a6e839-6c0c-45ed-9c7b-71c1e60d5591
-    m_ActionName: PlayerActionMap/Join[/Gamepad/buttonSouth,/Gamepad1/buttonSouth]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 62a64541-a4f7-4dd9-affc-4be04506d7b3
-    m_ActionName: PlayerActionMap/Aim[/Gamepad/rightStick,/Gamepad1/rightStick]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: df695e34-875f-49cd-8460-a812c51da98e
-    m_ActionName: PlayerActionMap/Attack[/Gamepad/rightTrigger,/Gamepad1/rightTrigger]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7530903043455601348}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: NextLevel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: e9bc54f7-ebc5-454b-8c1d-5ed2edc4164f
-    m_ActionName: PlayerActionMap/AdvanceMenu[/Gamepad/buttonSouth,/Gamepad1/buttonSouth]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: PlayerActionMap
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &7009255081398392554
 GameObject:
   m_ObjectHideFlags: 0

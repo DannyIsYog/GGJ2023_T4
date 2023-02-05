@@ -64,9 +64,18 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
+                    ""name"": ""StartGame"",
+                    ""type"": ""Button"",
+                    ""id"": ""89936873-9f40-43f0-b1f0-879e7e3abed2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""AdvanceMenu"",
                     ""type"": ""Button"",
-                    ""id"": ""e9bc54f7-ebc5-454b-8c1d-5ed2edc4164f"",
+                    ""id"": ""1bd3d42e-4f57-405b-bc38-eacc0ed3a26a"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -219,8 +228,19 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""f729c479-189c-4fc8-b30d-32572103e1db"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""id"": ""75509e66-c8fc-4622-9f98-c358218b4314"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StartGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d8c887c6-98bf-433d-a2dc-1901fe0c1701"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -251,6 +271,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_PlayerActionMap_Join = m_PlayerActionMap.FindAction("Join", throwIfNotFound: true);
         m_PlayerActionMap_Aim = m_PlayerActionMap.FindAction("Aim", throwIfNotFound: true);
         m_PlayerActionMap_Attack = m_PlayerActionMap.FindAction("Attack", throwIfNotFound: true);
+        m_PlayerActionMap_StartGame = m_PlayerActionMap.FindAction("StartGame", throwIfNotFound: true);
         m_PlayerActionMap_AdvanceMenu = m_PlayerActionMap.FindAction("AdvanceMenu", throwIfNotFound: true);
     }
 
@@ -315,6 +336,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActionMap_Join;
     private readonly InputAction m_PlayerActionMap_Aim;
     private readonly InputAction m_PlayerActionMap_Attack;
+    private readonly InputAction m_PlayerActionMap_StartGame;
     private readonly InputAction m_PlayerActionMap_AdvanceMenu;
     public struct PlayerActionMapActions
     {
@@ -324,6 +346,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Join => m_Wrapper.m_PlayerActionMap_Join;
         public InputAction @Aim => m_Wrapper.m_PlayerActionMap_Aim;
         public InputAction @Attack => m_Wrapper.m_PlayerActionMap_Attack;
+        public InputAction @StartGame => m_Wrapper.m_PlayerActionMap_StartGame;
         public InputAction @AdvanceMenu => m_Wrapper.m_PlayerActionMap_AdvanceMenu;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActionMap; }
         public void Enable() { Get().Enable(); }
@@ -346,6 +369,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Attack.started -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnAttack;
                 @Attack.performed -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnAttack;
                 @Attack.canceled -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnAttack;
+                @StartGame.started -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnStartGame;
+                @StartGame.performed -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnStartGame;
+                @StartGame.canceled -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnStartGame;
                 @AdvanceMenu.started -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnAdvanceMenu;
                 @AdvanceMenu.performed -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnAdvanceMenu;
                 @AdvanceMenu.canceled -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnAdvanceMenu;
@@ -365,6 +391,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Attack.started += instance.OnAttack;
                 @Attack.performed += instance.OnAttack;
                 @Attack.canceled += instance.OnAttack;
+                @StartGame.started += instance.OnStartGame;
+                @StartGame.performed += instance.OnStartGame;
+                @StartGame.canceled += instance.OnStartGame;
                 @AdvanceMenu.started += instance.OnAdvanceMenu;
                 @AdvanceMenu.performed += instance.OnAdvanceMenu;
                 @AdvanceMenu.canceled += instance.OnAdvanceMenu;
@@ -387,6 +416,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnJoin(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
+        void OnStartGame(InputAction.CallbackContext context);
         void OnAdvanceMenu(InputAction.CallbackContext context);
     }
 }
