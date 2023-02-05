@@ -6,7 +6,7 @@ Whether you like it or not, complex, corrupted and imaginary numbers will rule t
 You will both suffer at my hands when my insurmountable army of numbers burn everything you know to the ground!!!
 #Rootie
 Ok... You ready, Twootie?
-#Tootie
+#Twootie
 Let's do it, Rootie!
 # Math Magician
 GET THEM NUMBERS!!!!
