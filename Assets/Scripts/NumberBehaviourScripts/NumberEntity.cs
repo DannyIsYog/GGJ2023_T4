@@ -9,6 +9,7 @@ public class NumberEntity : MonoBehaviour
     // TO DO: APPLY MULTIPLE SPRITES TOGETHER/REPLACE SPRITE ARRAY WITH TEXT 
     // TO DO: CHANGE SPRITE OR FONT IN ORDER TO DISTINGUISH + OR - 
     // TO DO: CHANGE DIVIDE FUNCTION WITH NEW NUMBER
+    const int MAX_VAL = 10000;
 
     // Movement parameters
     [Header("Movement")]
@@ -24,6 +25,8 @@ public class NumberEntity : MonoBehaviour
     public bool isIncrementing = false;
     public UnityEvent<int> numberStart;
     public UnityEvent<int, int> numberChanged;
+    public GameObject preGlow;
+    public GameObject glow;
 
     // Text
     [Header("Text")]
@@ -41,6 +44,7 @@ public class NumberEntity : MonoBehaviour
     private float timePower;
     private bool isChanging = false;
     private SpriteRenderer spriteRenderer;
+    bool begin = false;
 
     void Awake()
     {
@@ -58,23 +62,37 @@ public class NumberEntity : MonoBehaviour
         timePower = playerPowerChangeCooldown;
         timeSqr = playerSqrChangeCooldown;
 
+        SetEnabled(false);
+    }
+
+    void SetEnabled(bool enabled)
+    {
+        Debug.Log("SetEnabled: " + enabled);
+        transform.GetChild(0).gameObject.SetActive(enabled);
+        GetComponent<SpriteRenderer>().enabled = enabled;
+        GetComponent<Collider2D>().enabled = enabled;
     }
 
     void FixedUpdate()
     {
-        Debug.Log("Number: " + numberValue);
-        Movement();
-        IncrementDecrement();
-        PerfectSquareHeadsUp();
+        if(begin) {
+            Movement();
+            IncrementDecrement();
+            PerfectSquareHeadsUp();
 
-        // Keep track of time
-        timePower += Time.deltaTime;
-        timeSqr += Time.deltaTime;
+            // Keep track of time
+            timePower += Time.deltaTime;
+            timeSqr += Time.deltaTime;
+        }
     }
 
     private void SetValue(float value)
     {
         numberChanged.Invoke((int)numberValue, (int)value);
+        if (value > MAX_VAL)
+            value = MAX_VAL;
+        else if (value < -MAX_VAL)
+            value = -MAX_VAL;
         numberValue = (int)value;
         text.text = numberValue.ToString();
     }
@@ -85,6 +103,12 @@ public class NumberEntity : MonoBehaviour
         SetValue(numberValue);
 
         ConfigureTimeChange();
+    }
+
+    public void BeginGame()
+    {
+        begin = true;
+        SetEnabled(true);
     }
 
     private void ConfigureTimeChange()
@@ -113,13 +137,21 @@ public class NumberEntity : MonoBehaviour
         lastVelocity = rb.velocity;
     }
 
+    public void StartGame()
+    {
+        begin = true;
+        SetEnabled(true);
+    }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // If shot by a squared projectile...
         if (collision.gameObject.tag == "PowerProjectile" && timePower >= playerPowerChangeCooldown)
         {
-            SetValue(Mathf.Pow(numberValue, 2));
+            float val = numberValue > MAX_VAL ? MAX_VAL : Mathf.Pow(numberValue, 2);
+            val = val > MAX_VAL ? MAX_VAL : val;
+            SetValue(val);
             Debug.Log("Collided with a power projectile");
 
             // Variable for cooldown
@@ -218,20 +250,10 @@ public class NumberEntity : MonoBehaviour
         // BEWARE: AT CURRENT TIME (16:14) THIS DOESN'T WORK SINCE SPRITE 0 CORRESPONDS TO 1
 
         // If this number is perfect square...
-        if (Mathf.Sqrt(numberValue) % 1 == 0)
-        {
-            Debug.Log("PerfectSquare!!!");
-        }
+        glow.SetActive(Mathf.Sqrt(numberValue) % 1 == 0);
         // If next number is perfect square... (increasing)
-        else if (Mathf.Sqrt(numberValue + 1) % 1 == 0 && isIncrementing)
-        {
-            Debug.Log("PerfectSquareComingUp");
-        }
-        // If next number is perfect square... (decreasing)
-        else if (Mathf.Sqrt(numberValue - 1) % 1 == 0 && !isIncrementing)
-        {
-            Debug.Log("PerfectSquareComingUp");
-        }
+        preGlow.SetActive((Mathf.Sqrt(numberValue + 1) % 1 == 0 && isIncrementing) ||
+            (Mathf.Sqrt(numberValue - 1) % 1 == 0 && !isIncrementing));
     }
 
 

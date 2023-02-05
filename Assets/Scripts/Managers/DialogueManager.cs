@@ -15,6 +15,7 @@ public class DialogueManager : MonoBehaviour
 
     [SerializeField] private GameObject dialogueTextBox;
     [SerializeField] private GameObject nameBox;
+    [SerializeField] private Image nameImage;
     [SerializeField] private TextMeshProUGUI dialogueText;
     
     
@@ -85,6 +86,12 @@ public class DialogueManager : MonoBehaviour
                 var split = tags[0].Split(',');
                 nameBox.SetActive(true);
                 nameBox.GetComponentInChildren<TextMeshProUGUI>().text = tags[0];
+                nameImage.sprite = Resources.Load<Sprite>("Portraits/" + tags[0]);
+                if(nameImage.sprite == null)
+                    nameImage.gameObject.SetActive(false);
+            } else {
+                nameBox.SetActive(false);
+                nameImage.gameObject.SetActive(false);
             }
 
             StopAllCoroutines();

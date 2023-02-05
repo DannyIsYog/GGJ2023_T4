@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PowerProjectile
   - SquaredRoot
+  - Number
   layers:
   - Default
   - TransparentFX

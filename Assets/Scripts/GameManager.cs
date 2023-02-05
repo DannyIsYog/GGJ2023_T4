@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI winText;
     public TextMeshProUGUI rangeText;
     public Slider loseSlider;
+    public GameObject rootUI;
+    public string nextScene;
+    bool begin = false;
 
     int targetsOutOfRange;
     // Start is called before the first frame update
@@ -25,20 +29,50 @@ public class GameManager : MonoBehaviour
         rangeText.text = "Range: " + rangeMin.ToString() + " -- " + rangeMax.ToString();
     }
 
+    public void NextLevel()
+    {
+        if(over)
+            SceneManager.LoadScene(nextScene);
+    }
+
+    public void Reset()
+    {
+        if(over)
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void StartGame()
+    {
+        begin = true;
+        foreach(GameObject obj in GameObject.FindGameObjectsWithTag("Number")) {
+            obj.GetComponent<NumberEntity>().StartGame();
+        }
+    }
+
     // Update is called once per frame
     float winInterval;
+    public bool test = false;
+    bool over = false;
     void Update()
     {
-        if (targetsOutOfRange == 0) {
-            winInterval = Mathf.Max(0, winInterval - Time.deltaTime);
-            winText.text = Mathf.CeilToInt(winInterval).ToString();
-            if (winInterval <= 0) {
-                Debug.Log("You win!");
-            }
-        } else {
-            loseSlider.value = Mathf.Max(0, loseSlider.value - (Time.deltaTime / loseTime));
-            if (loseSlider.value <= 0) {
-                Debug.Log("You lose!");
+        if(test)    {
+            StartGame();
+            test = false;
+        }
+        if(begin && !over) {
+            if (targetsOutOfRange == 0) {
+                winInterval = Mathf.Max(0, winInterval - Time.deltaTime);
+                winText.text = Mathf.CeilToInt(winInterval).ToString();
+                if (winInterval <= 0) {
+                    over = true;
+                    rootUI.SetActive(true);
+                }
+            } else {
+                loseSlider.value = Mathf.Max(0, loseSlider.value - (Time.deltaTime / loseTime));
+                if (loseSlider.value <= 0) {
+                    over = true;
+                    rootUI.SetActive(true);
+                }
             }
         }
     }

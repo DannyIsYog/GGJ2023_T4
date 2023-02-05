@@ -249,8 +249,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 79697589}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.01, y: -0.07, z: 0}
-  m_LocalScale: {x: 1, y: 12.428, z: 1}
+  m_LocalPosition: {x: 10.6064, y: -0.07, z: 0}
+  m_LocalScale: {x: 4.1927, y: 12.428, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -519,8 +519,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 150998640}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.59, y: -5.03, z: 0}
-  m_LocalScale: {x: 1, y: 23.14715, z: 1}
+  m_LocalPosition: {x: 0.59, y: -6.1317, z: 0}
+  m_LocalScale: {x: 3.2034, y: 23.14715, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -888,8 +888,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1112638757}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.76, y: 5, z: 0}
-  m_LocalScale: {x: 1, y: 23.14715, z: 1}
+  m_LocalPosition: {x: 0.76, y: 6.4615, z: 0}
+  m_LocalScale: {x: 3.9229, y: 23.14715, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1021,8 +1021,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1376918998}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.58, y: -0.19, z: 0}
-  m_LocalScale: {x: 1, y: 12.428, z: 1}
+  m_LocalPosition: {x: -9.6143, y: -0.19, z: 0}
+  m_LocalScale: {x: 3.0685, y: 12.428, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1035,6 +1035,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4626514960793695004, guid: b3dc47157bb1ac04796a1be18d62e4e6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4994625838157199112, guid: b3dc47157bb1ac04796a1be18d62e4e6, type: 3}
       propertyPath: m_Name
       value: LevelManager
@@ -1062,6 +1066,10 @@ PrefabInstance:
     - target: {fileID: 7530903043455601348, guid: b3dc47157bb1ac04796a1be18d62e4e6, type: 3}
       propertyPath: rangeMin
       value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7530903043455601348, guid: b3dc47157bb1ac04796a1be18d62e4e6, type: 3}
+      propertyPath: nextScene
+      value: Scenes/Level2
       objectReference: {fileID: 0}
     - target: {fileID: 8253628558821706718, guid: b3dc47157bb1ac04796a1be18d62e4e6, type: 3}
       propertyPath: m_RootOrder
@@ -1164,5 +1172,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerManager
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5454869950959561420, guid: ca30e1dcc497be84080a2e56dea5ab23, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ca30e1dcc497be84080a2e56dea5ab23, type: 3}
