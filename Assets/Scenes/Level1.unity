@@ -1035,10 +1035,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4626514960793695004, guid: b3dc47157bb1ac04796a1be18d62e4e6, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4994625838157199112, guid: b3dc47157bb1ac04796a1be18d62e4e6, type: 3}
       propertyPath: m_Name
       value: LevelManager
@@ -1050,26 +1046,6 @@ PrefabInstance:
     - target: {fileID: 7207064271323637386, guid: b3dc47157bb1ac04796a1be18d62e4e6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7530903043455601348, guid: b3dc47157bb1ac04796a1be18d62e4e6, type: 3}
-      propertyPath: winTime
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7530903043455601348, guid: b3dc47157bb1ac04796a1be18d62e4e6, type: 3}
-      propertyPath: loseTime
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 7530903043455601348, guid: b3dc47157bb1ac04796a1be18d62e4e6, type: 3}
-      propertyPath: rangeMax
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 7530903043455601348, guid: b3dc47157bb1ac04796a1be18d62e4e6, type: 3}
-      propertyPath: rangeMin
-      value: -5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7530903043455601348, guid: b3dc47157bb1ac04796a1be18d62e4e6, type: 3}
-      propertyPath: nextScene
-      value: Scenes/Level2
       objectReference: {fileID: 0}
     - target: {fileID: 8253628558821706718, guid: b3dc47157bb1ac04796a1be18d62e4e6, type: 3}
       propertyPath: m_RootOrder
