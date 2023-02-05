@@ -181,6 +181,7 @@ GameObject:
   - component: {fileID: 4882819375702994341}
   - component: {fileID: 5351661846347016528}
   - component: {fileID: 7767869035903676187}
+  - component: {fileID: 7382726445575797324}
   m_Layer: 0
   m_Name: Rootie
   m_TagString: Player
@@ -474,3 +475,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6506903, y: 0.35069475}
   m_EdgeRadius: 0
+--- !u!114 &7382726445575797324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7767869035903676263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27096c1e217f9804bbe54feb4fa5803f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skins:
+  - {fileID: 21300000, guid: 444ca50b20866a1eb8ddb6dde4828763, type: 3}
+  - {fileID: 21300000, guid: b89d5c4a404017846a41ff6e5d3c48b3, type: 3}
+  - {fileID: 21300000, guid: b4a9b6098eafcfb4e8f2d6f88b8ec538, type: 3}

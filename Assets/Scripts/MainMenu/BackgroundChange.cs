@@ -5,10 +5,12 @@ using UnityEngine.UI;
 
 public class BackgroundChange : MonoBehaviour
 {
-    public Sprite mathMagician;
-    public Sprite mathMagicianFried;
+    public GameObject mathMagician;
 
-    public Image background;
+    public GameObject gameLogo;
+    public GameObject mathMagicianFried;
+
+    public GameObject gameLogoFried;
 
     public float timeToChange = 5f;
 
@@ -24,14 +26,20 @@ public class BackgroundChange : MonoBehaviour
     private void ChangeToMathMagician()
     {
         Debug.Log("Change to Math Magician");
-        background.sprite = mathMagician;
+        mathMagicianFried.SetActive(false);
+        gameLogoFried.SetActive(false);
+        mathMagician.SetActive(true);
+        gameLogo.SetActive(true);
         Invoke("ChangeToMathMagicianFried", timeToChange);
     }
 
     private void ChangeToMathMagicianFried()
     {
         Debug.Log("Change to Math Magician Fried");
-        background.sprite = mathMagicianFried;
+        mathMagician.SetActive(false);
+        gameLogo.SetActive(false);
+        mathMagicianFried.SetActive(true);
+        gameLogoFried.SetActive(true);
         Invoke("ChangeToMathMagician", timeToChangeFried);
     }
 
