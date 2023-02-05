@@ -13,18 +13,29 @@ public class AttackManager : MonoBehaviour
     public GameObject bulletPrefab;
 
     public Collider2D swordCollider;
-    public float cooldown = 0.5f;
+    public float cooldown = 3f;
 
-    private float currentCooldown = 0f;
+    public float currentCooldown = 0f;
     public GameObject bulletIndicator;
 
     public AttackType currentAttackType = AttackType.Melee;
 
+    public Color bulletIndicatorColor;
+
     private void Update()
     {
+        bool enter = false;
         if (currentCooldown > 0)
         {
+            enter = true;
             currentCooldown -= Time.deltaTime;
+        }
+        if (enter)
+        {
+            if (currentCooldown <= 0)
+            {
+                bulletIndicator.GetComponent<SpriteRenderer>().color = Color.Lerp(Color.white, bulletIndicatorColor, 1.5f);
+            }
         }
     }
 
@@ -46,6 +57,7 @@ public class AttackManager : MonoBehaviour
     {
         GameObject bullet = Instantiate(bulletPrefab, bulletIndicator.transform.position, Quaternion.identity);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        bulletIndicator.GetComponent<SpriteRenderer>().color = Color.Lerp(bulletIndicatorColor, Color.white, 1f);
         rb.AddForce(bulletIndicator.transform.up * 10, ForceMode2D.Impulse);
         currentCooldown = cooldown;
     }
@@ -54,7 +66,8 @@ public class AttackManager : MonoBehaviour
     {
         swordCollider.enabled = true;
         currentCooldown = cooldown;
-        Invoke("DisableSwordCollider", 0.1f);
+        bulletIndicator.GetComponent<SpriteRenderer>().color = Color.Lerp(bulletIndicatorColor, Color.white, 1f);
+        Invoke("DisableSwordCollider", 0.2f);
     }
 
     private void DisableSwordCollider()

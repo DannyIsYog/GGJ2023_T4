@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5821398694256409808
 RectTransform:
   m_ObjectHideFlags: 0
@@ -170,7 +170,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.18}
   m_SizeDelta: {x: 2.881, y: 2.87}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6120708884635792290
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: x
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -228,7 +228,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 2.5
+  m_fontSize: 2.55
   m_fontSizeBase: 2
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -264,7 +264,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0.029057026}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -552,10 +552,10 @@ GameObject:
   - component: {fileID: 7866978595244985538}
   - component: {fileID: 7866978595244985543}
   - component: {fileID: 7866978595244985540}
-  - component: {fileID: 7866978595244985542}
+  - component: {fileID: 2266974988371538280}
   m_Layer: 0
-  m_Name: NumberPrefab
-  m_TagString: Number
+  m_Name: VariablePrefab
+  m_TagString: Variable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -667,7 +667,7 @@ Rigidbody2D:
   m_SleepingMode: 2
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &7866978595244985542
+--- !u!114 &2266974988371538280
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -676,27 +676,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 7866978595244985539}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c678b2b9a0f206f43a122b7d242890a7, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b4c0f26b776edd7b9addcefb7b4849a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 200
+  movementSpeed: 100
   newNumberOffset: 1.5
-  timeToIncDec: 10
-  playerSqrChangeCooldown: 0.2
-  playerPowerChangeCooldown: 0.2
-  randomizeIncDec: 1
-  isIncrementing: 0
-  numberStart:
+  numSpawn: 3
+  rangeMin: 0
+  rangeMax: 10
+  variableStart:
     m_PersistentCalls:
       m_Calls: []
-  numberChanged:
+  variableSpawned:
     m_PersistentCalls:
       m_Calls: []
-  preGlow: {fileID: 7817976366059491656}
-  glow: {fileID: 6998823047874535949}
-  text: {fileID: 2527995321663389020}
-  incdecText: {fileID: 7891178191524334685}
-  moveDirection: {x: 0, y: 0}
+  manager: {fileID: 0}
+  numberPrefab: {fileID: 7866978595244985539, guid: 32da2f37c8ca836458b2dcc8f8bcd7d3, type: 3}
   lastVelocity: {x: 0, y: 0}
-  numberValue: 0
-  timeSqr: 0

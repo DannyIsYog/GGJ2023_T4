@@ -72,9 +72,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 15
   m_Sprite: {fileID: 21300000, guid: d0523aa8eb885954cb2dd7f0512fc878, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.34901962, g: 0.34901962, b: 0.34901962, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -99,7 +99,6 @@ GameObject:
   - component: {fileID: 1800227906}
   - component: {fileID: 5361394460119699111}
   - component: {fileID: 1535938062990328570}
-  - component: {fileID: 5669240839375372452}
   - component: {fileID: 7767869035903676187}
   m_Layer: 0
   m_Name: Twootie
@@ -363,25 +362,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 4465010030681883273, guid: 708f8391e03c54c49a6719db5bff66d4, type: 3}
   swordCollider: {fileID: 0}
-  cooldown: 0.1
+  cooldown: 0.5
+  currentCooldown: 0
   bulletIndicator: {fileID: 5341371511600200625}
   currentAttackType: 1
---- !u!58 &5669240839375372452
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7767869035903676263}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.30598104
+  bulletIndicatorColor: {r: 0.3254902, g: 0.3254902, b: 0.3254902, a: 1}
 --- !u!61 &7767869035903676187
 BoxCollider2D:
   m_ObjectHideFlags: 0
