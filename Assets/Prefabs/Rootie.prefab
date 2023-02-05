@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 64442fa68a0503b4ca23a6285d410aa1, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.37254903, g: 0.37254903, b: 0.37254903, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -93,7 +93,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1546751517794149341}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 1800227906}
   - component: {fileID: 4882819375702994341}
   - component: {fileID: 5351661846347016528}
-  - component: {fileID: 3633228029942893859}
+  - component: {fileID: 7767869035903676187}
   m_Layer: 0
   m_Name: Rootie
   m_TagString: Player
@@ -290,32 +290,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!61 &7767869035903676187
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7767869035903676263}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.022602439, y: -0.028766647}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.8, y: 0.8}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.6506903, y: 0.35069475}
-  m_EdgeRadius: 0
 --- !u!114 &1800227906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -458,10 +432,12 @@ MonoBehaviour:
   bulletPrefab: {fileID: 4465010030681883273, guid: 708f8391e03c54c49a6719db5bff66d4, type: 3}
   swordCollider: {fileID: 2522549368018108675}
   cooldown: 0.5
-  bulletIndicator: {fileID: 6358080610392054810}
+  currentCooldown: 0
+  bulletIndicator: {fileID: 1546751517794149341}
   currentAttackType: 0
---- !u!58 &3633228029942893859
-CircleCollider2D:
+  bulletIndicatorColor: {r: 0.37254903, g: 0.37254903, b: 0.37254903, a: 1}
+--- !u!61 &7767869035903676187
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -473,6 +449,16 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.03190103}
+  m_Offset: {x: 0.022602439, y: -0.028766647}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.26601562
+  m_Size: {x: 0.6506903, y: 0.35069475}
+  m_EdgeRadius: 0

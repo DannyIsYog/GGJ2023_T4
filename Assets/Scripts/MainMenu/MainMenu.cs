@@ -5,27 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public string gameName = "BaseScene";
-    public void NewGame()
+    public string firstScene;
+    public void Play()
     {
-        PlayerPrefs.SetInt("level", 1);
-        StartGame();
-    }
-
-    public void LoadGame()
-    {
-        if (PlayerPrefs.HasKey("level"))
-        {
-            Debug.Log("loading " + PlayerPrefs.GetInt("level"));
-        }
-        else
-            PlayerPrefs.SetInt("level", 1);
-        StartGame();
-    }
-
-    public void StartGame()
-    {
-        SceneManager.LoadScene(gameName);
+        SceneManager.LoadScene(firstScene);
     }
 
     public void HowToPlay()
