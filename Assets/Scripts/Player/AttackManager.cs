@@ -44,7 +44,7 @@ public class AttackManager : MonoBehaviour
 
     private void Shoot_performed(InputAction.CallbackContext obj)
     {
-        GameObject bullet = Instantiate(bulletPrefab, bulletIndicator.transform.position, bulletIndicator.transform.rotation, bulletIndicator.transform);
+        GameObject bullet = Instantiate(bulletPrefab, bulletIndicator.transform.position, Quaternion.identity);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(bulletIndicator.transform.up * 10, ForceMode2D.Impulse);
         currentCooldown = cooldown;

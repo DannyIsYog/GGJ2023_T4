@@ -376,7 +376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 4465010030681883273, guid: 708f8391e03c54c49a6719db5bff66d4, type: 3}
   swordCollider: {fileID: 0}
-  cooldown: 0.5
+  cooldown: 0.1
   bulletIndicator: {fileID: 5341371511600200625}
   currentAttackType: 1
 --- !u!1 &8218464632248510721
