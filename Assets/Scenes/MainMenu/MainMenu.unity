@@ -176,6 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstScene: cutscene1
+  tutorialScene: TutorialLevel
 --- !u!1 &266517742
 GameObject:
   m_ObjectHideFlags: 0
@@ -881,7 +882,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 236075335}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: Play
+        m_MethodName: HowToPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1888,6 +1889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstScene: 
+  tutorialScene: 
 --- !u!1 &2129210979
 GameObject:
   m_ObjectHideFlags: 0
