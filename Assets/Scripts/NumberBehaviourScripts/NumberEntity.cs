@@ -6,9 +6,7 @@ using TMPro;
 
 public class NumberEntity : MonoBehaviour
 {
-    // TO DO: APPLY MULTIPLE SPRITES TOGETHER/REPLACE SPRITE ARRAY WITH TEXT 
     // TO DO: CHANGE SPRITE OR FONT IN ORDER TO DISTINGUISH + OR - 
-    // TO DO: CHANGE DIVIDE FUNCTION WITH NEW NUMBER
     const int MAX_VAL = 10000;
 
     // Movement parameters
@@ -31,6 +29,7 @@ public class NumberEntity : MonoBehaviour
     // Text
     [Header("Text")]
     public TextMeshProUGUI text;
+    public TextMeshProUGUI incdecText;
 
     // Auxiliary variables - Movement
     private Rigidbody2D rb;
@@ -95,6 +94,11 @@ public class NumberEntity : MonoBehaviour
             value = -MAX_VAL;
         numberValue = (int)value;
         text.text = numberValue.ToString();
+
+        if (isIncrementing)
+            incdecText.text = "+";
+        else
+            incdecText.text = "-";
     }
 
     private void ConfigureInitialNumber()
@@ -247,7 +251,6 @@ public class NumberEntity : MonoBehaviour
 
     private void PerfectSquareHeadsUp()
     {
-        // BEWARE: AT CURRENT TIME (16:14) THIS DOESN'T WORK SINCE SPRITE 0 CORRESPONDS TO 1
 
         // If this number is perfect square...
         glow.SetActive(Mathf.Sqrt(numberValue) % 1 == 0);
