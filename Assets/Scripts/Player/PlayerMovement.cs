@@ -35,7 +35,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if (context.canceled) return;
         if (context.performed) return;
+
+        if (gameManager.isTutorial)
+            gameManager.NextTutorialHint();
+
         gameManager.StartGame();
+
+
     }
 
     public void AdvanceLevel(InputAction.CallbackContext context)
@@ -44,4 +50,13 @@ public class PlayerMovement : MonoBehaviour
         if (context.performed) return;
         gameManager.NextLevel();
     }
+
+    public void AdvanceTutorial(InputAction.CallbackContext context)
+    {
+        if (context.canceled) return;
+        if (context.performed) return;
+        gameManager.NextTutorialHint();
+    }
+
+
 }

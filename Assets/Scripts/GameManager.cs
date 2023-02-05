@@ -22,6 +22,12 @@ public class GameManager : MonoBehaviour
     public AudioSource intro, loop;
     bool begin = false;
 
+    [Header("Tutorial UI")]
+    public bool isTutorial = false;
+    public GameObject tutorialObj;
+    private TutorialScript tutorialControls;
+
+
     int targetsOutOfRange;
     // Start is called before the first frame update
     void Start()
@@ -30,6 +36,9 @@ public class GameManager : MonoBehaviour
         winInterval = winTime;
         winText.text = Mathf.CeilToInt(winInterval).ToString();
         rangeText.text = "Range: " + rangeMin.ToString() + " -- " + rangeMax.ToString();
+
+        if (isTutorial)
+            tutorialControls = tutorialObj.GetComponent<TutorialScript>();
     }
 
     public void NextLevel()
@@ -97,6 +106,18 @@ public class GameManager : MonoBehaviour
         // Got back in range?
         } else if ((from < rangeMin || from > rangeMax) && (to >= rangeMin && to <= rangeMax)) {
             targetsOutOfRange--;
+        }
+    }
+
+    public void NextTutorialHint()
+    {
+        if (isTutorial)
+        {
+            tutorialControls.tutorialStage += 1;
+            tutorialControls.Sequence();
+
+            if(tutorialControls.tutorialStage == 100)
+                SceneManager.LoadScene(nextScene);
         }
     }
 }
