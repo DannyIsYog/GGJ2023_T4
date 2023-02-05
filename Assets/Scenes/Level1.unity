@@ -1035,6 +1035,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4086898635423210376, guid: b3dc47157bb1ac04796a1be18d62e4e6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 5.6447754
+      objectReference: {fileID: 0}
     - target: {fileID: 4994625838157199112, guid: b3dc47157bb1ac04796a1be18d62e4e6, type: 3}
       propertyPath: m_Name
       value: LevelManager
