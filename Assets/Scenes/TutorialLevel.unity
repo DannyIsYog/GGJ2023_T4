@@ -1855,17 +1855,25 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7207064271323637386, guid: b3dc47157bb1ac04796a1be18d62e4e6, type: 3}
-      propertyPath: m_AnchorMax.x
+    - target: {fileID: 7009255081398392554, guid: b3dc47157bb1ac04796a1be18d62e4e6, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7207064271323637386, guid: b3dc47157bb1ac04796a1be18d62e4e6, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7207064271323637386, guid: b3dc47157bb1ac04796a1be18d62e4e6, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7207064271643372436, guid: b3dc47157bb1ac04796a1be18d62e4e6, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7530903043455601348, guid: b3dc47157bb1ac04796a1be18d62e4e6, type: 3}
       propertyPath: winTime
-      value: 200
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 7530903043455601348, guid: b3dc47157bb1ac04796a1be18d62e4e6, type: 3}
       propertyPath: tutorial
@@ -1925,6 +1933,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8253628558821706718, guid: b3dc47157bb1ac04796a1be18d62e4e6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9191151891143397995, guid: b3dc47157bb1ac04796a1be18d62e4e6, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
