@@ -25,6 +25,8 @@ public class NumberEntity : MonoBehaviour
     public bool isIncrementing = false;
     public UnityEvent<int> numberStart;
     public UnityEvent<int, int> numberChanged;
+    public GameObject preGlow;
+    public GameObject glow;
 
     // Text
     [Header("Text")]
@@ -248,20 +250,10 @@ public class NumberEntity : MonoBehaviour
         // BEWARE: AT CURRENT TIME (16:14) THIS DOESN'T WORK SINCE SPRITE 0 CORRESPONDS TO 1
 
         // If this number is perfect square...
-        if (Mathf.Sqrt(numberValue) % 1 == 0)
-        {
-            Debug.Log("PerfectSquare!!!");
-        }
+        glow.SetActive(Mathf.Sqrt(numberValue) % 1 == 0);
         // If next number is perfect square... (increasing)
-        else if (Mathf.Sqrt(numberValue + 1) % 1 == 0 && isIncrementing)
-        {
-            Debug.Log("PerfectSquareComingUp");
-        }
-        // If next number is perfect square... (decreasing)
-        else if (Mathf.Sqrt(numberValue - 1) % 1 == 0 && !isIncrementing)
-        {
-            Debug.Log("PerfectSquareComingUp");
-        }
+        preGlow.SetActive((Mathf.Sqrt(numberValue + 1) % 1 == 0 && isIncrementing) ||
+            (Mathf.Sqrt(numberValue - 1) % 1 == 0 && !isIncrementing));
     }
 
 
