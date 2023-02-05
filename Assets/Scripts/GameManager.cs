@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public GameObject winUI;
     public GameObject loseUI;
     public string nextScene;
+    public AudioSource intro, loop;
     bool begin = false;
 
     int targetsOutOfRange;
@@ -55,6 +56,8 @@ public class GameManager : MonoBehaviour
     bool won = false;
     void Update()
     {
+        if(!intro.isPlaying && !loop.isPlaying)
+            loop.Play();
         if(test)    {
             StartGame();
             test = false;
