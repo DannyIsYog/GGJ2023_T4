@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI winText;
     public TextMeshProUGUI rangeText;
     public Slider loseSlider;
+    public GameObject rootUI;
+    public string nextScene;
     bool begin = false;
 
     int targetsOutOfRange;
@@ -24,6 +27,18 @@ public class GameManager : MonoBehaviour
         winInterval = winTime;
         winText.text = Mathf.CeilToInt(winInterval).ToString();
         rangeText.text = "Range: " + rangeMin.ToString() + " -- " + rangeMax.ToString();
+    }
+
+    public void NextLevel()
+    {
+        if(over)
+            SceneManager.LoadScene(nextScene);
+    }
+
+    public void Reset()
+    {
+        if(over)
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void StartGame()
@@ -37,23 +52,26 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     float winInterval;
     public bool test = false;
+    bool over = false;
     void Update()
     {
         if(test)    {
             StartGame();
             test = false;
         }
-        if(begin) {
+        if(begin && !over) {
             if (targetsOutOfRange == 0) {
                 winInterval = Mathf.Max(0, winInterval - Time.deltaTime);
                 winText.text = Mathf.CeilToInt(winInterval).ToString();
                 if (winInterval <= 0) {
-                    Debug.Log("You win!");
+                    over = true;
+                    rootUI.SetActive(true);
                 }
             } else {
                 loseSlider.value = Mathf.Max(0, loseSlider.value - (Time.deltaTime / loseTime));
                 if (loseSlider.value <= 0) {
-                    Debug.Log("You lose!");
+                    over = true;
+                    rootUI.SetActive(true);
                 }
             }
         }

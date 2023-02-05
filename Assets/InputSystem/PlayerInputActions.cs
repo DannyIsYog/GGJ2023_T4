@@ -62,6 +62,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""AdvanceMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""e9bc54f7-ebc5-454b-8c1d-5ed2edc4164f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -207,6 +216,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f729c479-189c-4fc8-b30d-32572103e1db"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AdvanceMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -231,6 +251,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_PlayerActionMap_Join = m_PlayerActionMap.FindAction("Join", throwIfNotFound: true);
         m_PlayerActionMap_Aim = m_PlayerActionMap.FindAction("Aim", throwIfNotFound: true);
         m_PlayerActionMap_Attack = m_PlayerActionMap.FindAction("Attack", throwIfNotFound: true);
+        m_PlayerActionMap_AdvanceMenu = m_PlayerActionMap.FindAction("AdvanceMenu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -294,6 +315,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActionMap_Join;
     private readonly InputAction m_PlayerActionMap_Aim;
     private readonly InputAction m_PlayerActionMap_Attack;
+    private readonly InputAction m_PlayerActionMap_AdvanceMenu;
     public struct PlayerActionMapActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -302,6 +324,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Join => m_Wrapper.m_PlayerActionMap_Join;
         public InputAction @Aim => m_Wrapper.m_PlayerActionMap_Aim;
         public InputAction @Attack => m_Wrapper.m_PlayerActionMap_Attack;
+        public InputAction @AdvanceMenu => m_Wrapper.m_PlayerActionMap_AdvanceMenu;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActionMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -323,6 +346,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Attack.started -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnAttack;
                 @Attack.performed -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnAttack;
                 @Attack.canceled -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnAttack;
+                @AdvanceMenu.started -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnAdvanceMenu;
+                @AdvanceMenu.performed -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnAdvanceMenu;
+                @AdvanceMenu.canceled -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnAdvanceMenu;
             }
             m_Wrapper.m_PlayerActionMapActionsCallbackInterface = instance;
             if (instance != null)
@@ -339,6 +365,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Attack.started += instance.OnAttack;
                 @Attack.performed += instance.OnAttack;
                 @Attack.canceled += instance.OnAttack;
+                @AdvanceMenu.started += instance.OnAdvanceMenu;
+                @AdvanceMenu.performed += instance.OnAdvanceMenu;
+                @AdvanceMenu.canceled += instance.OnAdvanceMenu;
             }
         }
     }
@@ -358,5 +387,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnJoin(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
+        void OnAdvanceMenu(InputAction.CallbackContext context);
     }
 }
